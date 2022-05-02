@@ -2,10 +2,9 @@ import React, {useState} from 'react'
 
 type AccordionPropsType = {
   titleValue: string
-  // collapsed: boolean
 }
 
-function UncontrolledAccordion(props: AccordionPropsType) {
+export function UncontrolledAccordion(props: AccordionPropsType) {
   let [collapsed, setCollapsed] = useState(false)
 
   return (
@@ -37,4 +36,3 @@ function AccordionBody() {
   )
 }
 
-export default UncontrolledAccordion

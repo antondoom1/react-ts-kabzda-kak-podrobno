@@ -1,39 +1,66 @@
 import React, {useState} from 'react'
 
-type AccordionPropsType = {
-  titleValue: string
-  collapsed: boolean
-  onClickHandler: () => void
+type ItemType = {
+  title: string
+  value: any
 }
 
-function Accordion(props: AccordionPropsType) {
+export type AccordionPropsType = {
+  titleValue: string
+  collapsed: boolean
+  onChange: () => void
+  /**
+   *  Elements that are showed when is opened. Each item should be ItemType
+   */
+  items: ItemType[]
+  /**
+   * Callback that is called when any item clicked
+   * @param value is value of clicked item
+   */
+  onClick: (value: any) => void
+  /**
+   * Optional color of header text
+   */
+  color?: string
+}
+
+export function Accordion(props: AccordionPropsType) {
   return (
     <div>
-      <AccordionTitle title={props.titleValue} onClickHandler={props.onClickHandler}/>
-      {!props.collapsed && <AccordionBody/>}
+      <AccordionTitle
+        color={props.color}
+        title={props.titleValue}
+        onChange={props.onChange}/>
+
+      {!props.collapsed && <AccordionBody items={props.items} onCLick={props.onClick}/>}
     </div>
   )
 }
 
 type AccordionTitlePropsType = {
   title: string
-  onClickHandler: () => void
+  onChange: () => void
+  color?: string
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-  return <h3 style={{cursor: 'pointer'}} onClick={props.onClickHandler}>
-    -- {props.title} --
-  </h3>
+  return (
+    <h3 style={{color: props.color ? props.color : 'black', cursor: 'pointer'}} onClick={(e) => props.onChange()}>-- {props.title} --</h3>
+  )
 }
 
-function AccordionBody() {
+type AccordionBodyPropsType = {
+  items: ItemType[]
+  onCLick: (value: any) => void
+}
+
+function AccordionBody(props: AccordionBodyPropsType) {
   return (
     <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
+      {
+        props.items.map((i, index) => <li onClick={() => props.onCLick(i.value)} key={index}> {i.title} </li>)
+      }
     </ul>
   )
 }
 
-export default Accordion
