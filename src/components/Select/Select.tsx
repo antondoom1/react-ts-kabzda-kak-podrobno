@@ -73,3 +73,5 @@ export const Select = (props: SelectPropsType) => {
     </>
   )
 }
+
+const SelectMemo = React.memo(Select)

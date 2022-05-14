@@ -12,29 +12,31 @@ export function UncontrolledRating(props: RatingPropsType) {
 
   return (
     <div>
-      <Star selected={value > 0} onClickHandler={() => {
+      <StarMemo selected={value > 0} onClickHandler={() => {
         setValue(1)
         props.onChange(1)
       }}/>
-      <Star selected={value > 1} onClickHandler={() => {
+      <StarMemo selected={value > 1} onClickHandler={() => {
         setValue(2)
         props.onChange(2)
       }}/>
-      <Star selected={value > 2} onClickHandler={() => {
+      <StarMemo selected={value > 2} onClickHandler={() => {
         setValue(3)
         props.onChange(3)
       }}/>
-      <Star selected={value > 3} onClickHandler={() => {
+      <StarMemo selected={value > 3} onClickHandler={() => {
         setValue(4)
         props.onChange(4)
       }}/>
-      <Star selected={value > 4} onClickHandler={() => {
+      <StarMemo selected={value > 4} onClickHandler={() => {
         setValue(5)
         props.onChange(5)
       }}/>
     </div>
   )
 }
+
+const UncontrolledRatingMemo = React.memo(UncontrolledRating)
 
 type StarPropsType = {
   selected: boolean
@@ -46,3 +48,5 @@ function Star(props: StarPropsType) {
     {props.selected ? <b>star </b> : 'star '}
   </span>
 }
+
+const StarMemo = React.memo(Star)

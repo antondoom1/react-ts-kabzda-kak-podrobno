@@ -10,14 +10,16 @@ type RatingPropsType = {
 export function Rating(props: RatingPropsType) {
   return (
     <div>
-      <Star selected={props.value > 0} onClickHandler={() => props.onClickHandler(1)}/>
-      <Star selected={props.value > 1} onClickHandler={() => props.onClickHandler(2)}/>
-      <Star selected={props.value > 2} onClickHandler={() => props.onClickHandler(3)}/>
-      <Star selected={props.value > 3} onClickHandler={() => props.onClickHandler(4)}/>
-      <Star selected={props.value > 4} onClickHandler={() => props.onClickHandler(5)}/>
+      <StarMemo selected={props.value > 0} onClickHandler={() => props.onClickHandler(1)}/>
+      <StarMemo selected={props.value > 1} onClickHandler={() => props.onClickHandler(2)}/>
+      <StarMemo selected={props.value > 2} onClickHandler={() => props.onClickHandler(3)}/>
+      <StarMemo selected={props.value > 3} onClickHandler={() => props.onClickHandler(4)}/>
+      <StarMemo selected={props.value > 4} onClickHandler={() => props.onClickHandler(5)}/>
     </div>
   )
 }
+
+const RatingMemo = React.memo(Rating)
 
 type StarPropsType = {
   selected: boolean
@@ -30,3 +32,4 @@ function Star(props: StarPropsType) {
   </span>
 }
 
+const StarMemo = React.memo(Star)

@@ -54,3 +54,5 @@ export const UncontrolledOnOff = (props: PropsType) => {
     </div>
   )
 }
+
+const UncontrolledOnOffMemo = React.memo(UncontrolledOnOff)

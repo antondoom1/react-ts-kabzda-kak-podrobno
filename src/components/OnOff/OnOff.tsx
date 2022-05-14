@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 type OnOffType = {
   on: boolean
@@ -46,3 +46,5 @@ export const OnOff = (props: OnOffType) => {
     </div>
   )
 }
+
+const OnOffMemo = React.memo(OnOff)
