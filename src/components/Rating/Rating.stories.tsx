@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {ComponentStory, ComponentMeta} from '@storybook/react'
 import {Rating, RatingValueType} from './Rating'
 
 
