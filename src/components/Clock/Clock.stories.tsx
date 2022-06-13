@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {Clock} from './Clock'
 
 export default {
@@ -6,29 +6,33 @@ export default {
   component: Clock
 }
 
-export const ClockVariant1 = () => {
-  return <Clock toggleDigital={false}/>
+export const DigitalClock = () => {
+  return <Clock mode={'digital'}/>
 }
 
-export const ClockVariant2 = () => {
-
-  const [state, setState] = useState<string>('')
-
-  let clock = new Date().toLocaleTimeString('ru-RU', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  })
-
-  useEffect(() => {
-
-    const id = setInterval(() => setState(clock), 1000)
-
-    return () => clearInterval(id)
-
-  }, [state])
-
-  return <>
-    Clock - {clock}
-  </>
+export const AnalogClock = () => {
+  return <Clock mode={'analog'}/>
 }
+
+// export const ClockVariant2 = () => {
+//
+//   const [state, setState] = useState<string>('')
+//
+//   let clock = new Date().toLocaleTimeString('ru-RU', {
+//     hour: '2-digit',
+//     minute: '2-digit',
+//     second: '2-digit'
+//   })
+//
+//   useEffect(() => {
+//
+//     const id = setInterval(() => setState(clock), 1000)
+//
+//     return () => clearInterval(id)
+//
+//   }, [state])
+//
+//   return <>
+//     Clock - {clock}
+//   </>
+// }
